@@ -1,0 +1,36 @@
+<!-- Formulario utilizado para agregar nuevas entradas de empleado en la base de datos -->
+<form class="form-horizontal alert alert-warning" name="empList" id="empForm"
+ ng-submit="insertInfo(empInfo);" hidden>
+<h3 class="text-center">Insertar nuevo producto en la base de datos</h3>
+	<div class="form-group">
+		<label for="nombre">Nombre producto</label>
+		<input id="nombre" type="text" name="nombre" class="form-control" placeholder="Digite el Producto" ng-model="empInfo.nombre"  autofocus required />
+	</div>
+	<div class="form-group">
+		<p class="text-danger" ng-show="empList.nombre.$invalid && empList.nombre.$dirty">El campo de nombre está vacío!</p>
+	</div>
+	<div class="form-group">
+		<label for="tipoProducto">Tipo de producto</label>
+		<input id="tipoProducto" type="text" name="tipoProducto" class="form-control" placeholder="Digite el tipo de producto" ng-model="empInfo.tipoProducto" autofocus required />
+	</div>
+	<div class="form-group">
+		<p class="text-danger" ng-show="empList.tipoProducto.$invalid && empList.tipoProducto.$dirty">El campo de tipoProducto está vacío!</p>
+	</div>
+	<div class="form-group">
+		<label for="referencia">Numero de referencia</label>
+		<input id="referencia" type="text" name="referencia" class="form-control" placeholder="Digite la referencia" ng-model="empInfo.referencia" autofocus required />
+	</div>
+	<div class="form-group">
+		<p class="text-danger" ng-show="empList.referencia.$invalid && empList.referencia.$dirty">El campo referencia está vacío!</p>
+	</div>
+	<div class="form-group">
+		<label for="precio">Precio</label>
+		<input id="precio" type="text" name="precio" class="form-control" placeholder="Digite el precio" ng-model="empInfo.precio" autofocus required />		
+	</div>
+	<div class="form-group">
+		<p class="text-danger" ng-show="empList.precio.$invalid && empList.precio.$dirty">El campo precio está vacío!</p>
+	</div>
+	<div class="form-group">
+		<button class="btn btn-warning" ng-disabled="empList.$invalid" ng-click="formToggle()">Añadir</button>
+	</div>
+</form>

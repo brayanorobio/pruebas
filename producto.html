@@ -1,0 +1,104 @@
+<html ng-app="crudApp">
+<head>
+   <meta charset="utf-8">
+    <title>Productos Naturales VAO</title>
+    <meta name="description" content="Workshop Bootstrap 2.0">
+    <meta name="author" content="Brian Orobio">
+    <!-[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]—>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="assets/css/bootstrap-responsive.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      body { padding-top: 60px; }
+    </style>
+    <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Include Bootstrap CSS -->
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<!-- Include main CSS -->
+<link rel="stylesheet" type="text/css" href="css/style.css">
+<!-- Include jQuery library -->
+<script src="js/jQuery/jquery.min.js"></script>
+<!-- Include AngularJS library -->
+<script src="lib/angular/angular.min.js"></script>
+<!-- Include Bootstrap Javascript -->
+<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="index.html">Productos Naturales</a>
+          <ul class="nav">
+            <li><a href="index.html">Inicio</a></li>
+            <li class="active"><a href="#">Producto</a></li>
+            <li><a href="lineanutricion.html">Linea Nutricion</a></li>
+            <li ><a href="lineabelleza.html">Linea Belleza</a></li>
+            <li><a href="lineasalud.html">Linea Salud</a></li>
+            <li><a href="Factura.php">Factura</a></li>
+          </ul>
+        </div>
+      </div>
+     </div>
+
+
+<div class="container wrapper" ng-controller="DbController">
+<h1 class="text-center">Inventario Productos Naturales VAO</h1>
+<nav class="navbar navbar-default">
+<div class="navbar-header">
+<div class="alert alert-default navbar-brand search-box">
+<button class="btn btn-Danger" ng-show="show_form" ng-click="formToggle()">Agregar Producto <span class="glyphicon glyphicon-upload" aria-hidden="true"></span></button>
+</div>
+<div class="alert alert-default input-group search-box">
+<span class="input-group-btn">
+<input type="text" class="form-control" placeholder="Buscar producto en la base de datos ..." ng-model="search_query">
+</span>
+</div>
+</div>
+</nav>
+<div class="col-md-6 col-md-offset-3">
+
+<!-- se utiliza para insertar datos en la base de datos -->
+<div ng-include src="'templates/form.html'"></div>
+
+<!-- se utiliza para editar y actualizar datos en base de datos -->
+<div ng-include src="'templates/editForm.html'"></div>
+</div>
+<div class="clearfix"></div>
+
+<!-- Tabla para mostrar los detalles de los empleados -->
+<div class="table-responsive">
+<table class="table table-hover">
+<tr>
+<th>Emp ID</th>
+<th>Nombre</th>
+<th>Tipo de producto</th>
+<th>Referencia</th>
+<th>Precio</th>
+<th></th>
+<th></th>
+</tr>
+<tr ng-repeat="detail in details | filter:search_query">
+<td>
+<span>{{detail.idProducto}}</span></td>
+<td>{{detail.nombre}}</td>
+<td>{{detail.tipoProducto}}</td>
+<td>{{detail.referencia}}</td>
+<td>{{detail.precio}}</td>
+<td>
+<button class="btn btn-info" ng-click="editInfo(detail)" title="Edit"><span class="glyphicon glyphicon-pencil"></span></button>
+</td>
+<td>
+<button class="btn btn-success" ng-click="deleteInfo(detail)" title="Delete"><span class="glyphicon glyphicon-remove"></span></button>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<!-- controlador -->
+<script src="js/angular-script.js"></script>
+</body>
+</html>
